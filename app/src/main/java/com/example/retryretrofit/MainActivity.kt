@@ -1,6 +1,7 @@
 package com.example.retryretrofit
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         apiService.getUsers().enqueue(object : Callback<ArrayList<UserResponse?>>{
             override fun onFailure(call: Call<ArrayList<UserResponse?>>, t: Throwable) {
                 txvResult.text = t.message
+                Log.e("mainActivity", "error: $t")
                 Toast.makeText(applicationContext, "Failure " + t.message, Toast.LENGTH_LONG)
                     .show()
             }
