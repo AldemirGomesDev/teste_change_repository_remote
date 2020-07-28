@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<ArrayList<UserResponse?>>, response: Response<ArrayList<UserResponse?>>) {
                 if (response.isSuccessful) {
                     txvResult.setText(response.code().toString())
+                    Log.e("mainActivity", "error: ${response.code()}")
                     Toast.makeText(
                         applicationContext, "Success " + response.code(),
                         Toast.LENGTH_LONG
